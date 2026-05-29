@@ -1,0 +1,37 @@
+<section class="hero admin-hero">
+  <span class="eyebrow">Admin access</span>
+  <h1 class="hero-title">Login to manage the portfolio.</h1>
+  <p class="hero-copy">Sign in to add projects, posts, products, books, resources, and social links.</p>
+</section>
+
+<section class="section two-column">
+  <div class="content-card" data-reveal>
+    <h2>Login</h2>
+    <form action="/inlog" method="post" class="form-grid">
+      <div class="field">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" required>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <p class="small-note" style="margin-top: 1rem;">Default admin credentials are loaded from your `.env` file.</p>
+  </div>
+
+  <div class="stacked">
+    <% if (allowSetup) { %>
+      <div class="content-card" data-reveal>
+        <h2>First-time setup</h2>
+        <p class="small-note">No admin account exists yet. Create the first admin user to unlock the dashboard.</p>
+        <a href="/admin/setup" class="btn btn-secondary">Create admin</a>
+      </div>
+    <% } %>
+    <div class="content-card" data-reveal>
+      <h2>Tip</h2>
+      <p class="small-note">Store credentials securely in your environment, and keep JWT_SECRET long and random.</p>
+    </div>
+  </div>
+</section>

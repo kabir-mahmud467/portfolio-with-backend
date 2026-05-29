@@ -1,0 +1,48 @@
+<section class="hero admin-hero">
+  <span class="eyebrow">Admin</span>
+  <h1 class="hero-title"><%= entity.label %></h1>
+  <p class="hero-copy">Add, edit, or remove content for this section.</p>
+</section>
+
+<section class="section">
+  <div class="admin-toolbar">
+    <div>
+      <p class="muted">Collection management</p>
+      <h2 class="section-title"><%= entity.label %> list</h2>
+    </div>
+    <a href="<%= entity.basePath %>/new" class="btn btn-primary">Add new</a>
+  </div>
+
+  <div class="content-card table-shell" data-reveal>
+    <% if (items.length) { %>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Created</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% items.forEach((item) => { %>
+            <tr>
+              <td><%= item[entity.titleField] || item.title || item.name || item.label %></td>
+              <td><%= new Date(item.createdAt).toLocaleDateString() %></td>
+              <td>
+                <div class="actions-inline">
+                  <a href="<%= entity.basePath %>/<%= item._id %>/edit" class="mini-btn">Edit</a>
+                  <form action="<%= entity.basePath %>/<%= item._id %>/delete" method="post">
+                    <button type="submit" class="mini-btn mini-btn-danger">Delete</button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <div class="empty-state">No records yet. Add the first item to this collection.</div>
+    <% } %>
+  </div>
+</section>
+

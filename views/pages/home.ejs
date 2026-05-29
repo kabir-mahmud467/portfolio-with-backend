@@ -1,0 +1,199 @@
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow"><%= siteSettings && siteSettings.heroEyebrow ? siteSettings.heroEyebrow : "Available for select collaborations" %></span>
+      <h1 class="hero-title"><%= siteSettings && siteSettings.heroTitle ? siteSettings.heroTitle : "Crafting sharp, modern digital experiences." %></h1>
+      <p class="hero-copy">
+        <%= siteSettings && siteSettings.heroDescription ? siteSettings.heroDescription : "I’m Kabir Mahmud. This portfolio brings together my work, ideas, resources, books, shop items, and writing in one polished place with a dark glass aesthetic." %>
+      </p>
+      <div class="hero-actions">
+        <a href="<%= siteSettings && siteSettings.heroPrimaryCtaUrl ? siteSettings.heroPrimaryCtaUrl : '/projects' %>" class="btn btn-primary"><%= siteSettings && siteSettings.heroPrimaryCta ? siteSettings.heroPrimaryCta : "Explore projects" %></a>
+        <a href="<%= siteSettings && siteSettings.heroSecondaryCtaUrl ? siteSettings.heroSecondaryCtaUrl : '/contact' %>" class="btn btn-secondary"><%= siteSettings && siteSettings.heroSecondaryCta ? siteSettings.heroSecondaryCta : "Start a conversation" %></a>
+      </div>
+    </div>
+
+    <div class="stacked">
+      <div class="content-card">
+        <p class="section-kicker">Highlights</p>
+        <h3>One place for portfolio, content, and commerce.</h3>
+        <p>
+          This site is structured so the admin can manage projects, blog posts, social links, resources,
+          products, and books directly from the backend.
+        </p>
+        <div class="pill-row">
+          <span class="pill">Express</span>
+          <span class="pill">MongoDB</span>
+          <span class="pill">Cloudinary</span>
+          <span class="pill">GSAP</span>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <% stats.forEach((stat) => { %>
+          <div class="stat-card">
+            <p class="stat-value"><%= stat.value %></p>
+            <p class="stat-label"><%= stat.label %></p>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Featured work</p>
+      <h2 class="section-title">Projects that define the portfolio</h2>
+    </div>
+    <a href="/projects" class="btn btn-secondary">View all projects</a>
+  </div>
+  <div class="card-grid">
+    <% if (projects.length) { %>
+      <% projects.forEach((project) => { %>
+        <article class="content-card" data-reveal>
+          <% if (project.image && project.image.url) { %>
+            <img class="card-image" src="<%= project.image.url %>" alt="<%= project.title %>">
+          <% } %>
+          <p class="card-meta"><%= project.featured ? "Featured project" : "Project" %></p>
+          <h3><a href="/projects/<%= project.slug %>"><%= project.title %></a></h3>
+          <p><%= project.excerpt %></p>
+          <% if (project.technologies && project.technologies.length) { %>
+            <div class="pill-row">
+              <% project.technologies.slice(0, 4).forEach((tech) => { %>
+                <span class="pill"><%= tech %></span>
+              <% }) %>
+            </div>
+          <% } %>
+        </article>
+      <% }) %>
+    <% } else { %>
+      <div class="empty-state">Add your first project from the admin dashboard to show it here.</div>
+    <% } %>
+  </div>
+</section>
+
+<section class="section two-column">
+  <div>
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Latest writing</p>
+        <h2 class="section-title">Blog updates and thoughts</h2>
+      </div>
+      <a href="/blog" class="btn btn-secondary">Open blog</a>
+    </div>
+    <div class="list-grid">
+      <% if (blogPosts.length) { %>
+        <% blogPosts.forEach((post) => { %>
+          <article class="content-card" data-reveal>
+            <p class="card-meta">Blog post</p>
+            <h3><a href="/blog/<%= post.slug %>"><%= post.title %></a></h3>
+            <p><%= post.excerpt %></p>
+          </article>
+        <% }) %>
+      <% } else { %>
+        <div class="empty-state">Publish a post from the admin dashboard to populate this section.</div>
+      <% } %>
+    </div>
+  </div>
+  <div class="stacked">
+    <div class="content-card" data-reveal>
+      <p class="eyebrow">Contact snapshot</p>
+      <h3><%= settings.headline %></h3>
+      <p><%= settings.description %></p>
+      <p class="muted"><strong>Email:</strong> <%= settings.email %></p>
+      <p class="muted"><strong>Phone:</strong> <%= settings.phone %></p>
+      <p class="muted"><strong>Location:</strong> <%= settings.location %></p>
+      <div class="card-actions">
+        <a href="/contact" class="btn btn-primary">Contact me</a>
+        <a href="/social" class="btn btn-secondary">Social links</a>
+      </div>
+    </div>
+    <div class="content-card" data-reveal>
+      <p class="eyebrow">Current focus</p>
+      <h3>Products, books, and resources</h3>
+      <p>
+        Keep this portfolio fresh with curated products, recommended books, and reusable resources managed
+        directly in the admin panel.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Resources</p>
+      <h2 class="section-title">Useful assets and links</h2>
+    </div>
+    <a href="/resources" class="btn btn-secondary">See all resources</a>
+  </div>
+  <div class="card-grid">
+    <% if (resources.length) { %>
+      <% resources.forEach((resource) => { %>
+        <article class="content-card" data-reveal>
+          <% if (resource.image && resource.image.url) { %>
+            <img class="card-image" src="<%= resource.image.url %>" alt="<%= resource.title %>">
+          <% } %>
+          <p class="card-meta"><%= resource.category %> • <%= resource.type %></p>
+          <h3><a href="/resources/<%= resource.slug %>"><%= resource.title %></a></h3>
+          <p><%= resource.detail %></p>
+        </article>
+      <% }) %>
+    <% } else { %>
+      <div class="empty-state">Add resources to highlight guides, links, templates, or downloads.</div>
+    <% } %>
+  </div>
+</section>
+
+<section class="section two-column">
+  <div>
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Shop</p>
+        <h2 class="section-title">Products and services</h2>
+      </div>
+      <a href="/shop" class="btn btn-secondary">Visit shop</a>
+    </div>
+    <div class="card-grid">
+      <% if (products.length) { %>
+        <% products.forEach((product) => { %>
+          <article class="content-card" data-reveal>
+            <% if (product.image && product.image.url) { %>
+              <img class="card-image" src="<%= product.image.url %>" alt="<%= product.name %>">
+            <% } %>
+            <p class="card-meta"><%= product.category %></p>
+            <h3><a href="/shop/<%= product.slug %>"><%= product.name %></a></h3>
+            <p><%= product.description %></p>
+            <p class="muted"><strong>$<%= product.price.toFixed ? product.price.toFixed(2) : product.price %></strong> <%= product.currency || "USD" %></p>
+          </article>
+        <% }) %>
+      <% } else { %>
+        <div class="empty-state">Add products from the admin panel to populate the shop route.</div>
+      <% } %>
+    </div>
+  </div>
+  <div>
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Books</p>
+        <h2 class="section-title">Reading list and recommendations</h2>
+      </div>
+      <a href="/books" class="btn btn-secondary">Browse books</a>
+    </div>
+    <div class="list-grid">
+      <% if (books.length) { %>
+        <% books.forEach((book) => { %>
+          <article class="content-card" data-reveal>
+            <p class="card-meta"><%= book.category %></p>
+            <h3><a href="/books/<%= book.slug %>"><%= book.title %></a></h3>
+            <p><%= book.author %></p>
+            <p><%= book.description %></p>
+          </article>
+        <% }) %>
+      <% } else { %>
+        <div class="empty-state">Add books to feature your favorite reads and recommendations.</div>
+      <% } %>
+    </div>
+  </div>
+</section>

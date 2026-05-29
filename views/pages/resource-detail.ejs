@@ -1,0 +1,20 @@
+<section class="hero page-hero detail-hero">
+  <div>
+    <span class="eyebrow">Resource detail</span>
+    <h1 class="hero-title"><%= resource.title %></h1>
+    <p class="hero-copy"><%= resource.detail %></p>
+    <div class="pill-row">
+      <span class="pill"><%= resource.category %></span>
+      <span class="pill"><%= resource.type %></span>
+    </div>
+    <% if (resource.url) { %>
+      <div class="card-actions">
+        <a href="<%= resource.url %>" target="_blank" rel="noreferrer" class="btn btn-primary">Open resource</a>
+      </div>
+    <% } %>
+  </div>
+  <% if (resource.image && resource.image.url) { %>
+    <img class="detail-image" src="<%= resource.image.url %>" alt="<%= resource.title %>">
+  <% } %>
+</section>
+

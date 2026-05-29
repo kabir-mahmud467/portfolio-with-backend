@@ -1,0 +1,25 @@
+<section class="hero page-hero">
+  <span class="eyebrow">Books</span>
+  <h1 class="hero-title">Reading list and book shelf.</h1>
+  <p class="hero-copy">Add books with price and cover art so the page can double as a curated reading store.</p>
+</section>
+
+<section class="section card-grid">
+  <% if (books.length) { %>
+    <% books.forEach((book) => { %>
+      <article class="content-card" data-reveal>
+        <% if (book.image && book.image.url) { %>
+          <img class="card-image" src="<%= book.image.url %>" alt="<%= book.title %>">
+        <% } %>
+        <p class="card-meta"><%= book.category %></p>
+        <h3><a href="/books/<%= book.slug %>"><%= book.title %></a></h3>
+        <p><%= book.author %></p>
+        <p><%= book.description %></p>
+        <p class="muted"><strong>$<%= Number(book.price).toFixed(2) %></strong> <%= book.currency || "USD" %></p>
+      </article>
+    <% }) %>
+  <% } else { %>
+    <div class="empty-state">No books added yet.</div>
+  <% } %>
+</section>
+

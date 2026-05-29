@@ -1,0 +1,46 @@
+<section class="hero admin-hero">
+  <span class="eyebrow">Admin</span>
+  <h1 class="hero-title">Contact settings</h1>
+  <p class="hero-copy">Edit the public contact page copy and details here.</p>
+</section>
+
+<section class="section">
+  <div class="form-panel" data-reveal>
+    <form action="/admin/contact" method="post" class="form-grid">
+      <div class="field">
+        <label for="headline">Headline</label>
+        <input id="headline" name="headline" type="text" value="<%= settings.headline || "" %>">
+      </div>
+      <div class="field">
+        <label for="description">Description</label>
+        <textarea id="description" name="description"><%= settings.description || "" %></textarea>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" value="<%= settings.email || "" %>">
+      </div>
+      <div class="field">
+        <label for="phone">Phone</label>
+        <input id="phone" name="phone" type="text" value="<%= settings.phone || "" %>">
+      </div>
+      <div class="field">
+        <label for="location">Location</label>
+        <input id="location" name="location" type="text" value="<%= settings.location || "" %>">
+      </div>
+      <div class="field">
+        <label for="formTitle">Form title</label>
+        <input id="formTitle" name="formTitle" type="text" value="<%= settings.formTitle || "" %>">
+      </div>
+      <div class="field">
+        <label for="formButton">Form button</label>
+        <input id="formButton" name="formButton" type="text" value="<%= settings.formButton || "" %>">
+      </div>
+      <div class="field">
+        <label for="successMessage">Success message</label>
+        <textarea id="successMessage" name="successMessage"><%= settings.successMessage || "" %></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Update contact settings</button>
+    </form>
+  </div>
+</section>
+

@@ -1,0 +1,42 @@
+<section class="hero page-hero">
+  <span class="eyebrow">About</span>
+  <h1 class="hero-title"><%= siteSettings && siteSettings.aboutTitle ? siteSettings.aboutTitle : "A portfolio shaped around clarity and momentum." %></h1>
+  <p class="hero-copy">
+    <%= siteSettings && siteSettings.aboutStory ? siteSettings.aboutStory : "Kabir Mahmud’s portfolio is built to present work cleanly, publish ideas quickly, and keep everything manageable from a single admin panel." %>
+  </p>
+</section>
+
+<section class="section two-column">
+  <div class="content-card" data-reveal>
+    <p class="eyebrow">Story</p>
+    <h2>Modern, practical, and content-first.</h2>
+    <p>
+      <%= siteSettings && siteSettings.aboutApproach ? siteSettings.aboutApproach : "The site is designed for a dark visual language, glassy surfaces, and a clear hierarchy so the work stands out. It combines portfolio pages, writing, a resource library, a small shop, and a reading shelf." %>
+    </p>
+  </div>
+  <div class="content-card" data-reveal>
+    <p class="eyebrow">Contact</p>
+    <h2><%= settings.headline %></h2>
+    <p><%= settings.description %></p>
+    <p class="muted"><strong>Email:</strong> <%= settings.email %></p>
+    <p class="muted"><strong>Phone:</strong> <%= settings.phone %></p>
+    <p class="muted"><strong>Location:</strong> <%= settings.location %></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Stats</p>
+      <h2 class="section-title">A quick snapshot</h2>
+    </div>
+  </div>
+  <div class="stat-grid">
+    <% stats.forEach((stat) => { %>
+      <div class="stat-card" data-reveal>
+        <p class="stat-value"><%= stat.value %></p>
+        <p class="stat-label"><%= stat.label %></p>
+      </div>
+    <% }) %>
+  </div>
+</section>

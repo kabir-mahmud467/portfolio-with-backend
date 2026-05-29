@@ -1,0 +1,23 @@
+<section class="hero page-hero">
+  <span class="eyebrow">Blog</span>
+  <h1 class="hero-title">Notes, ideas, and longer thoughts.</h1>
+  <p class="hero-copy">Publish posts straight from the admin area and they’ll appear here automatically.</p>
+</section>
+
+<section class="section list-grid">
+  <% if (posts.length) { %>
+    <% posts.forEach((post) => { %>
+      <article class="content-card" data-reveal>
+        <p class="card-meta">Published</p>
+        <h3><a href="/blog/<%= post.slug %>"><%= post.title %></a></h3>
+        <p><%= post.excerpt %></p>
+        <div class="card-actions">
+          <a href="/blog/<%= post.slug %>" class="btn btn-secondary">Read post</a>
+        </div>
+      </article>
+    <% }) %>
+  <% } else { %>
+    <div class="empty-state">No posts published yet.</div>
+  <% } %>
+</section>
+

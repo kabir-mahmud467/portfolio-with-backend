@@ -1,0 +1,16 @@
+<section class="hero page-hero detail-hero">
+  <div>
+    <span class="eyebrow">Product detail</span>
+    <h1 class="hero-title"><%= product.name %></h1>
+    <p class="hero-copy"><%= product.description %></p>
+    <p class="muted"><strong>$<%= Number(product.price).toFixed(2) %></strong> <%= product.currency || "USD" %></p>
+    <div class="pill-row">
+      <span class="pill"><%= product.category %></span>
+      <span class="pill"><%= product.stock %> in stock</span>
+    </div>
+  </div>
+  <% if (product.image && product.image.url) { %>
+    <img class="detail-image" src="<%= product.image.url %>" alt="<%= product.name %>">
+  <% } %>
+</section>
+

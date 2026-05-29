@@ -1,0 +1,27 @@
+<section class="hero page-hero">
+  <span class="eyebrow">Social</span>
+  <h1 class="hero-title">All the places to connect.</h1>
+  <p class="hero-copy">Keep this list editable so the latest social links always stay in sync.</p>
+</section>
+
+<section class="section card-grid">
+  <% if (links.length) { %>
+    <% links.forEach((link) => { %>
+      <article class="content-card" data-reveal>
+        <p class="card-meta"><%= link.platform %></p>
+        <div class="social-stack">
+          <a href="<%= link.url %>" target="_blank" rel="noreferrer" class="social-icon-link" aria-label="Open <%= link.label %> profile">
+            <% if (link.iconUrl) { %>
+              <img src="<%= link.iconUrl %>" alt="" class="social-icon-image">
+            <% } else { %>
+              <span class="social-icon-fallback"><%= link.platform ? link.platform.charAt(0).toUpperCase() : "S" %></span>
+            <% } %>
+          </a>
+          <h3 class="social-name"><%= link.label %></h3>
+        </div>
+      </article>
+    <% }) %>
+  <% } else { %>
+    <div class="empty-state">No social links added yet.</div>
+  <% } %>
+</section>

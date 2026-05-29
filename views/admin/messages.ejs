@@ -1,0 +1,49 @@
+<section class="hero admin-hero">
+  <span class="eyebrow">Inbox</span>
+  <h1 class="hero-title">Contact messages</h1>
+  <p class="hero-copy">All messages sent through the public contact form appear here.</p>
+</section>
+
+<section class="section">
+  <div class="content-card table-shell" data-reveal>
+    <% if (messages.length) { %>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Message</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% messages.forEach((message) => { %>
+            <tr>
+              <td><%= message.name %></td>
+              <td><%= message.email %></td>
+              <td><%= message.subject || "-" %></td>
+              <td><%= message.message %></td>
+              <td><%= message.status %></td>
+              <td>
+                <div class="actions-inline">
+                  <% if (message.status !== "read") { %>
+                    <form action="/admin/messages/<%= message._id %>/read" method="post">
+                      <button type="submit" class="mini-btn">Mark read</button>
+                    </form>
+                  <% } %>
+                  <form action="/admin/messages/<%= message._id %>/delete" method="post">
+                    <button type="submit" class="mini-btn mini-btn-danger">Delete</button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <div class="empty-state">No messages yet.</div>
+    <% } %>
+  </div>
+</section>

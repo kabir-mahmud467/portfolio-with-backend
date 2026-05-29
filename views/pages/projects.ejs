@@ -1,0 +1,36 @@
+<section class="hero page-hero">
+  <span class="eyebrow">Projects</span>
+  <h1 class="hero-title">Selected builds and experiments.</h1>
+  <p class="hero-copy">These projects can be highlighted, edited, or replaced from the admin dashboard anytime.</p>
+</section>
+
+<section class="section card-grid">
+  <% if (projects.length) { %>
+    <% projects.forEach((project) => { %>
+      <article class="content-card" data-reveal>
+        <% if (project.image && project.image.url) { %>
+          <img class="card-image" src="<%= project.image.url %>" alt="<%= project.title %>">
+        <% } %>
+        <p class="card-meta"><%= project.featured ? "Featured" : "Project" %></p>
+        <h3><a href="/projects/<%= project.slug %>"><%= project.title %></a></h3>
+        <p><%= project.excerpt %></p>
+        <% if (project.technologies && project.technologies.length) { %>
+          <div class="pill-row">
+            <% project.technologies.forEach((tech) => { %>
+              <span class="pill"><%= tech %></span>
+            <% }) %>
+          </div>
+        <% } %>
+        <div class="card-actions">
+          <a href="/projects/<%= project.slug %>" class="btn btn-secondary">Open project</a>
+          <% if (project.liveUrl) { %>
+            <a href="<%= project.liveUrl %>" target="_blank" rel="noreferrer" class="btn btn-primary">Live site</a>
+          <% } %>
+        </div>
+      </article>
+    <% }) %>
+  <% } else { %>
+    <div class="empty-state">No projects yet. Add the first one in the admin panel.</div>
+  <% } %>
+</section>
+

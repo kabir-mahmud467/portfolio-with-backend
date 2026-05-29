@@ -1,0 +1,67 @@
+<section class="hero admin-hero">
+  <span class="eyebrow">Admin</span>
+  <h1 class="hero-title">Site settings</h1>
+  <p class="hero-copy">Edit the content that powers the homepage and about page.</p>
+</section>
+
+<section class="section">
+  <div class="form-panel" data-reveal>
+    <form action="/admin/site-settings" method="post" enctype="multipart/form-data" class="form-grid">
+      <div class="field">
+        <label for="brandTagline">Brand tagline</label>
+        <input id="brandTagline" name="brandTagline" type="text" value="<%= settings.brandTagline || "" %>">
+      </div>
+      <div class="field">
+        <label for="heroEyebrow">Hero eyebrow</label>
+        <input id="heroEyebrow" name="heroEyebrow" type="text" value="<%= settings.heroEyebrow || "" %>">
+      </div>
+      <div class="field">
+        <label for="heroTitle">Hero title</label>
+        <textarea id="heroTitle" name="heroTitle"><%= settings.heroTitle || "" %></textarea>
+      </div>
+      <div class="field">
+        <label for="heroDescription">Hero description</label>
+        <textarea id="heroDescription" name="heroDescription"><%= settings.heroDescription || "" %></textarea>
+      </div>
+      <div class="field">
+        <label for="heroPrimaryCta">Primary CTA label</label>
+        <input id="heroPrimaryCta" name="heroPrimaryCta" type="text" value="<%= settings.heroPrimaryCta || "" %>">
+      </div>
+      <div class="field">
+        <label for="heroPrimaryCtaUrl">Primary CTA URL</label>
+        <input id="heroPrimaryCtaUrl" name="heroPrimaryCtaUrl" type="text" value="<%= settings.heroPrimaryCtaUrl || "" %>">
+      </div>
+      <div class="field">
+        <label for="heroSecondaryCta">Secondary CTA label</label>
+        <input id="heroSecondaryCta" name="heroSecondaryCta" type="text" value="<%= settings.heroSecondaryCta || "" %>">
+      </div>
+      <div class="field">
+        <label for="heroSecondaryCtaUrl">Secondary CTA URL</label>
+        <input id="heroSecondaryCtaUrl" name="heroSecondaryCtaUrl" type="text" value="<%= settings.heroSecondaryCtaUrl || "" %>">
+      </div>
+      <div class="field">
+        <label for="aboutTitle">About title</label>
+        <input id="aboutTitle" name="aboutTitle" type="text" value="<%= settings.aboutTitle || "" %>">
+      </div>
+      <div class="field">
+        <label for="aboutStory">About story</label>
+        <textarea id="aboutStory" name="aboutStory"><%= settings.aboutStory || "" %></textarea>
+      </div>
+      <div class="field">
+        <label for="aboutApproach">About approach</label>
+        <textarea id="aboutApproach" name="aboutApproach"><%= settings.aboutApproach || "" %></textarea>
+      </div>
+      <div class="field">
+        <label for="profileImageFile">Profile image</label>
+        <input id="profileImageFile" name="profileImageFile" type="file" accept="image/*" />
+      </div>
+      <% if (settings.profileImage && settings.profileImage.url) { %>
+        <div class="field">
+          <label>Current image</label>
+          <img class="card-image" src="<%= settings.profileImage.url %>" alt="Profile image">
+        </div>
+      <% } %>
+      <button type="submit" class="btn btn-primary">Save site settings</button>
+    </form>
+  </div>
+</section>

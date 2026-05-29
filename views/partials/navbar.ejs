@@ -1,0 +1,43 @@
+<header class="site-header glass-panel">
+  <div class="brand">
+    <a href="/" class="brand-mark">KM</a>
+    <div>
+      <a href="/" class="brand-name">Kabir Mahmud</a>
+      <p class="brand-tag"><%= siteSettings && siteSettings.brandTagline ? siteSettings.brandTagline : "Portfolio, writing, products, and resources" %></p>
+    </div>
+  </div>
+
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="primary-nav" id="primary-nav" data-primary-nav>
+    <a href="/" class="nav-link">Home</a>
+    <a href="/about" class="nav-link">About</a>
+    <a href="/contact" class="nav-link">Contact</a>
+    <a href="/projects" class="nav-link">Projects</a>
+
+    <div class="nav-dropdown" data-dropdown>
+      <button class="nav-link nav-dropdown-trigger" type="button" data-dropdown-toggle>
+        Others
+        <span>▾</span>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="/social" class="nav-dropdown-item">Social</a>
+        <a href="/blog" class="nav-dropdown-item">Blog</a>
+        <a href="/resources" class="nav-dropdown-item">Resources</a>
+        <a href="/shop" class="nav-dropdown-item">Shop</a>
+        <a href="/books" class="nav-dropdown-item">Books</a>
+      </div>
+    </div>
+
+    <% if (isAdmin) { %>
+      <a href="/admin" class="nav-link nav-admin-link">Admin</a>
+      <form action="/admin/logout" method="post" class="nav-logout">
+        <button type="submit" class="nav-link nav-logout-button">Logout</button>
+      </form>
+    <% } %>
+  </nav>
+</header>

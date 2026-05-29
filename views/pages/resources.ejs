@@ -1,0 +1,23 @@
+<section class="hero page-hero">
+  <span class="eyebrow">Resources</span>
+  <h1 class="hero-title">Guides, links, downloads, and references.</h1>
+  <p class="hero-copy">Resources are ideal for templates, utility links, or other useful material you want to share.</p>
+</section>
+
+<section class="section card-grid">
+  <% if (resources.length) { %>
+    <% resources.forEach((resource) => { %>
+      <article class="content-card" data-reveal>
+        <% if (resource.image && resource.image.url) { %>
+          <img class="card-image" src="<%= resource.image.url %>" alt="<%= resource.title %>">
+        <% } %>
+        <p class="card-meta"><%= resource.category %> • <%= resource.type %></p>
+        <h3><a href="/resources/<%= resource.slug %>"><%= resource.title %></a></h3>
+        <p><%= resource.detail %></p>
+      </article>
+    <% }) %>
+  <% } else { %>
+    <div class="empty-state">No resources yet.</div>
+  <% } %>
+</section>
+

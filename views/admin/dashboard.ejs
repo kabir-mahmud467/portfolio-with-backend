@@ -1,0 +1,54 @@
+<section class="hero admin-hero">
+  <span class="eyebrow">Dashboard</span>
+  <h1 class="hero-title">Control the entire site from one place.</h1>
+  <p class="hero-copy">This dashboard connects all public content to MongoDB documents and Cloudinary media.</p>
+</section>
+
+<section class="section">
+  <div class="stat-grid">
+    <% stats.forEach((stat) => { %>
+      <div class="stat-card" data-reveal>
+        <p class="stat-value"><%= stat.value %></p>
+        <p class="stat-label"><%= stat.label %></p>
+      </div>
+    <% }) %>
+  </div>
+</section>
+
+<section class="section">
+  <div class="admin-toolbar">
+    <div>
+      <p class="eyebrow">Sections</p>
+      <h2 class="section-title">Manage content</h2>
+    </div>
+    <div class="page-actions">
+      <a href="/admin/site-settings" class="btn btn-primary">Site settings</a>
+      <a href="/admin/contact" class="btn btn-secondary">Contact settings</a>
+    </div>
+  </div>
+
+  <div class="card-grid" style="margin-bottom: 1rem;">
+    <% settingsLinks.forEach((link) => { %>
+      <article class="content-card" data-reveal>
+        <h3><%= link.label %></h3>
+        <p class="small-note">Open the editor for this system area.</p>
+        <a href="<%= link.href %>" class="btn btn-primary">Open</a>
+      </article>
+    <% }) %>
+  </div>
+
+  <div class="admin-sidebar">
+    <% adminEntities.forEach((entity) => { %>
+      <article class="admin-card" data-reveal>
+        <h3><%= entity.label %></h3>
+        <p class="small-note">Create, edit, and delete <%= entity.label.toLowerCase() %>.</p>
+        <a href="<%= entity.basePath %>" class="btn btn-primary">Open</a>
+      </article>
+    <% }) %>
+    <article class="admin-card" data-reveal>
+      <h3>Messages</h3>
+      <p class="small-note">View contact submissions stored from the public form.</p>
+      <a href="/admin/messages" class="btn btn-secondary">Open inbox</a>
+    </article>
+  </div>
+</section>

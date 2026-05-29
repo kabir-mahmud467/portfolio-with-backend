@@ -1,0 +1,30 @@
+<section class="hero admin-hero">
+  <span class="eyebrow">Admin setup</span>
+  <h1 class="hero-title">Create the first administrator.</h1>
+  <p class="hero-copy">This screen only appears when no admin user exists yet.</p>
+</section>
+
+<section class="section two-column">
+  <div class="content-card" data-reveal>
+    <h2>Setup form</h2>
+    <form action="/admin/setup" method="post" class="form-grid">
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required>
+      </div>
+      <div class="field">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" required>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Create admin</button>
+    </form>
+  </div>
+  <div class="content-card" data-reveal>
+    <h2>What this does</h2>
+    <p class="small-note">Creates a MongoDB user with the admin role, hashes the password, and enables login.</p>
+  </div>
+</section>

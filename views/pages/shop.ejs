@@ -1,0 +1,24 @@
+<section class="hero page-hero">
+  <span class="eyebrow">Shop</span>
+  <h1 class="hero-title">Products with price, category, and media.</h1>
+  <p class="hero-copy">Use the admin panel to add or edit products directly from MongoDB and Cloudinary.</p>
+</section>
+
+<section class="section card-grid">
+  <% if (products.length) { %>
+    <% products.forEach((product) => { %>
+      <article class="content-card" data-reveal>
+        <% if (product.image && product.image.url) { %>
+          <img class="card-image" src="<%= product.image.url %>" alt="<%= product.name %>">
+        <% } %>
+        <p class="card-meta"><%= product.category %></p>
+        <h3><a href="/shop/<%= product.slug %>"><%= product.name %></a></h3>
+        <p><%= product.description %></p>
+        <p class="muted"><strong>$<%= Number(product.price).toFixed(2) %></strong> <%= product.currency || "USD" %></p>
+      </article>
+    <% }) %>
+  <% } else { %>
+    <div class="empty-state">No products added yet.</div>
+  <% } %>
+</section>
+

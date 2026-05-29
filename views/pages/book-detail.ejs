@@ -1,0 +1,21 @@
+<section class="hero page-hero detail-hero">
+  <div>
+    <span class="eyebrow">Book detail</span>
+    <h1 class="hero-title"><%= book.title %></h1>
+    <p class="hero-copy"><%= book.author %></p>
+    <p class="muted"><strong>$<%= Number(book.price).toFixed(2) %></strong> <%= book.currency || "USD" %></p>
+    <p class="hero-copy"><%= book.description %></p>
+    <div class="pill-row">
+      <span class="pill"><%= book.category %></span>
+    </div>
+    <% if (book.link) { %>
+      <div class="card-actions">
+        <a href="<%= book.link %>" target="_blank" rel="noreferrer" class="btn btn-primary">Buy book</a>
+      </div>
+    <% } %>
+  </div>
+  <% if (book.image && book.image.url) { %>
+    <img class="detail-image" src="<%= book.image.url %>" alt="<%= book.title %>">
+  <% } %>
+</section>
+

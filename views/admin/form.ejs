@@ -1,0 +1,72 @@
+<section class="hero admin-hero">
+  <span class="eyebrow">Admin form</span>
+  <h1 class="hero-title"><%= item ? "Edit" : "Add" %> <%= entity.label.slice(0, -1) %></h1>
+  <p class="hero-copy">Use this form to manage the selected collection.</p>
+</section>
+
+<section class="section">
+  <div class="form-panel" data-reveal>
+    <form action="<%= entity.basePath %>/save" method="post" <%- entity.fileField ? 'enctype="multipart/form-data"' : '' %> class="form-grid">
+      <% if (item) { %>
+        <input type="hidden" name="id" value="<%= item._id %>">
+      <% } %>
+
+      <% entity.fields.forEach((field) => { %>
+        <% if (field.type === "file") { } else { %>
+        <div class="field">
+          <label for="<%= field.name %>"><%= field.label %></label>
+          <% const value = values[field.name]; %>
+          <% if (field.type === "textarea") { %>
+            <textarea id="<%= field.name %>" name="<%= field.name %>" <%= field.required ? "required" : "" %>><%= value ?? "" %></textarea>
+          <% } else if (field.type === "checkbox") { %>
+            <input id="<%= field.name %>" name="<%= field.name %>" type="checkbox" <%= value ? "checked" : "" %> />
+          <% } else if (field.type === "select" && field.options) { %>
+            <select id="<%= field.name %>" name="<%= field.name %>">
+              <% field.options.forEach((option) => { %>
+                <option value="<%= option %>" <%= option === value ? "selected" : "" %>><%= option %></option>
+              <% }) %>
+            </select>
+          <% } else { %>
+            <input
+              id="<%= field.name %>"
+              name="<%= field.name %>"
+              type="<%= field.type %>"
+              value="<%= value ?? "" %>"
+              placeholder="<%= field.placeholder || "" %>"
+              step="<%= field.step || "" %>"
+              <%= field.required ? "required" : "" %>
+            />
+          <% } %>
+          <% if (field.help) { %>
+            <span class="field-help"><%= field.help %></span>
+          <% } %>
+        </div>
+        <% } %>
+      <% }) %>
+
+      <% if (entity.imageField && item && item[entity.imageField] && item[entity.imageField].url) { %>
+        <div class="field">
+          <label>Current image</label>
+          <img class="card-image" src="<%= item[entity.imageField].url %>" alt="Current image">
+        </div>
+      <% } %>
+
+      <% entity.fields.forEach((field) => { %>
+        <% if (field.type !== "file") { } else { %>
+        <div class="field">
+          <label for="<%= field.name %>"><%= field.label %></label>
+          <input id="<%= field.name %>" name="<%= field.name %>" type="file" accept="image/*" />
+          <% if (field.help) { %>
+            <span class="field-help"><%= field.help %></span>
+          <% } %>
+        </div>
+        <% } %>
+      <% }) %>
+
+      <div class="card-actions">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="<%= entity.basePath %>" class="btn btn-secondary">Back</a>
+      </div>
+    </form>
+  </div>
+</section>

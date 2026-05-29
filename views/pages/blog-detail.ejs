@@ -1,0 +1,25 @@
+<section class="hero page-hero detail-hero">
+  <div>
+    <span class="eyebrow">Blog post</span>
+    <h1 class="hero-title"><%= post.title %></h1>
+    <p class="hero-copy"><%= post.excerpt %></p>
+  </div>
+  <% if (post.coverImage && post.coverImage.url) { %>
+    <img class="detail-image" src="<%= post.coverImage.url %>" alt="<%= post.title %>">
+  <% } %>
+</section>
+
+<section class="section">
+  <article class="content-card markdown" data-reveal>
+    <h2>Article</h2>
+    <p><%- post.content.replace(/\n/g, "<br>") %></p>
+    <% if (post.tags && post.tags.length) { %>
+      <div class="pill-row">
+        <% post.tags.forEach((tag) => { %>
+          <span class="pill"><%= tag %></span>
+        <% }) %>
+      </div>
+    <% } %>
+  </article>
+</section>
+
