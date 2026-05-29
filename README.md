@@ -21,10 +21,7 @@ Node.js portfolio site built with Express, EJS, MongoDB, and Cloudinary.
 
 ## Admin setup
 
-The default admin account is created automatically:
-
-- Username: `noone`
-- Password: `nothing`
+add admin password in your .env file
 
 Open `/inlog` to sign in.
 
